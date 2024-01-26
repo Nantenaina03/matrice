@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>
+       Affichage
+        </title>
+        <link rel='stylesheet' href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+        <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    </head>
+    <body>
+        <h1> RECETTE ANNUELLE DE L'ETABLISSEMENT </h1>     
+        <table class="table table-bordered  table-responsive">
+            <tr>
+                <td class="table table-info">Années</td>
+                <td class="table table-info">mois</td>
+                <td class="table table-info">maternite</td>
+                <td class="table table-info">medecine</td>
+                <td class="table table-info">Actes_Chirurgicaux</td>
+                <td class="table table-info">Pediatrie</td>
+                <td class="table table-info">Ophtalmo</td>
+                <td class="table table-info">ATU</td>
+                <td class="table table-info">Banque_de_sang</td>
+                <td class="table table-info">Tiers_service</td>
+                <td class="table table-info">RPE_Actes</td>
+                <td class="table table-success">CE_CM</td>
+                <td class="table table-success">Part_med</td>
+                <td class="table table-success">RPE</td>
+                <td class="table table-warning">ECG</td>
+                <td class="table table-warning">Echo</td>
+                <td class="table table-warning">Radio</td>
+                <td class="table table-warning">Labo</td>
+                <td class="table table-warning">Compte_LIM</td>
+                <td class="table table-warning">RPE_2</td>
+                <td class="table table-danger">Stomato</td>
+                <td class="table table-danger">Compte_stomato</td>
+                <td class="table table-danger">Compte_RPE</td>
+                <td>Hebergement_salle_payante</td>
+                <td>TOTAL_RPE</td>
+                <td>RP_non_permanent</td>
+                <td class="table table-warning">RPE_instruction_permanent</td>
+                <td class="table table-warning">Autorise_fonctionnement</td>
+                <td class="table table-warning">Fond_de_secours</td>
+                <td class="table table-warning">Primes_rendement</td>
+                <td class="table table-warning">Compte_FEH</td>
+                <td>Hebergement_salle_commune </td>
+            </tr>
+        {% for donnees in donnees %}
+            <tr>
+                <td>{{ donnees.annees}} </td>
+                <td>{{ donnees.mois}} </td>
+                <td>{{ donnees.maternite }} </td>
+                <td>{{ donnees.medecine }} </td>
+                <td>{{ donnees.ActesChirurgicaux }} </td>
+                <td>{{ donnees.Pediatrie }} </td>
+                <td>{{ donnees.Ophtalmo }} </td>
+                <td>{{ donnees.ATU }} </td>
+                <td>{{ donnees.BanqueDeSang }} </td>
+                <td>{{ donnees.TiersService }} </td>
+                <td class="table table-active">{{ donnees.RPEActes }} </td>
+                <td>{{ donnees.CECM }} </td>
+                <td class="table table-active">{{ donnees.Partmed }} </td>
+                <td class="table table-active">{{ donnees.RPE }} </td>
+                <td>{{ donnees.ECG }} </td>
+                <td>{{ donnees.Echo }} </td>
+                <td>{{ donnees.Radio }} </td>
+                <td>{{ donnees.Labo }} </td>
+                <td class="table table-active">{{ donnees.CompteLIM }} </td>
+                <td class="table table-active">{{ donnees.RPE2 }} </td>
+                <td>{{ donnees.Stomato }} </td>
+                <td class="table table-active">{{ donnees.CompteStomato }} </td>
+                <td class="table table-active">{{ donnees.CompteRPE }} </td>
+                <td>{{ donnees.HebergementSallePayante }} </td>
+                <td class="table table-active">{{ donnees.TOTALRPE }} </td>
+                <td class="table table-active">{{ donnees.RPNonPermanent }} </td>
+                <td class="table table-active">{{ donnees.RPEInstructionPermanent }} </td>
+                <td class="table table-active">{{ donnees.AutoriseFonctionnement }} </td>
+                <td class="table table-active">{{ donnees.FondDeSecours }} </td>
+                <td class="table table-active">{{ donnees.PrimesRendement }} </td>
+                <td class="table table-active">{{ donnees.CompteFEH }} </td>
+                <td>{{ donnees.HebergementSalleCommune }} </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
