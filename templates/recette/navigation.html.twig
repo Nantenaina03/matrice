@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titre %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{asset('Assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('Assets/style.css')}}">
     <link rel='stylesheet' href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
     <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
-    <div class="nav">
-        <div class="logo"> <span>RPE</span> HOPITAL</div>
+    <header>
+        <div class="logo"> <span>HOPITAL</span> RPE</div>
         <ul class="menu">
-            <a href="#">Recette</a>
-            <a href="#">Trim1</a>
-            <a href="#">Trim2</a>
-            <a href="">Trim3</a>
+            <a href="{{"/Recette/Affichage"}}">Affichage</a>
+            <a href="{{"/Recette"}}">Insertion</a>
+            <a href="#">Contact</a>
+            <a href="{{ "/logout" }}">Déconnexion</a>
         </ul>
-    </div>
+    </header>
     {% block body %}{% endblock %}
 </body>
 </html>

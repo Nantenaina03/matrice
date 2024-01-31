@@ -49,38 +49,104 @@ class RecetteType extends AbstractType
                 ],
             ])
             ->add('Maternite', IntegerType::class, [
-                'label'=>'Maternité'
+                'label'=>'Maternité',
+                'attr' => [
+                    'placeholder' => 'Maternité',
+                ],
             ])
-            ->add('Medecine', IntegerType::class, [])
-            ->add('Actes_Chirurgicaux', IntegerType::class, [])
+            ->add('Medecine', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Medecine',
+                ],
+            ])
+            ->add('Actes_Chirurgicaux', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Actes_Chirurgicaux',
+                ],
+            ])
             ->add('Pediatrie', IntegerType::class, [
-                'label'=>'Pédiatrie'
+                'label'=>'Pédiatrie',
+                'attr' => [
+                    'placeholder' => 'Pediatrie',
+                ],
             ])
-            ->add('Ophtalmo', IntegerType::class, [])
+            ->add('Ophtalmo', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Ophtalmo',
+                ],
+            ])
             ->add('ATU', IntegerType::class, [
-                'label'=>'ATU'
+                'label'=>'ATU',
+                'attr' => [
+                    'placeholder' => 'ATU',
+                ],
             ])
-            ->add('Banque_de_sang', IntegerType::class, [])
-            ->add('Tiers_service', IntegerType::class, [])
+            ->add('Banque_de_sang', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Banque_de_sang',
+                ],
+            ])
+            ->add('Tiers_service', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Tiers_service',
+                ],
+            ])
             ->add('CE_CM', IntegerType::class, [
-                'label'=>'CE CM'
+                'label'=>'CE CM',
+                'attr' => [
+                    'placeholder' => 'CE_CM',
+                ],
             ])
             ->add('ECG', IntegerType::class, [
-                'label'=>'ECG'
+                'label'=>'ECG',
+                'attr' => [
+                    'placeholder' => 'ECG',
+                ],
             ])
-            ->add('Echo', IntegerType::class, [])
-            ->add('Radio', IntegerType::class, [])
-            ->add('Labo', IntegerType::class, [])
-            ->add('Stomato', IntegerType::class, [])
-            ->add('Hebergement_salle_payante', IntegerType::class, [])
-            ->add('Hebergement_salle_commune', IntegerType::class, [])
+            ->add('Echo', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Echo',
+                ],
+            ])
+            ->add('Radio', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Radio',
+                ],
+            ])
+            ->add('Labo', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Labo',
+                ],
+            ])
+            ->add('Stomato', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Stomato',
+                ],
+            ])
+            ->add('Hebergement_salle_payante', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Hebergement_salle_payante',
+                ],
+            ])
+            ->add('Hebergement_salle_commune', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Hebergement_salle_commune',
+                ],
+            ])
             ->add('Marge_beneficiaire', IntegerType::class, [
-                'label'=>'Marge bénéficiaire des médicaments'
+                'label'=>'Marge bénéficiaire des médicaments',
+                'attr' => [
+                    'placeholder' => 'Marge bénéficiaire des médicaments',
+                ],
             ])
             ->add('DONS', IntegerType::class, [
-                'label'=>'DONS'
+                'label'=>'DONS',
+                'attr' => [
+                    'placeholder' => 'DONS',
+                ],
             ])
             ->add('Envoyer', SubmitType::class, [
+                'attr' => ['class' => 'btn-insert'],
             ]);
     }
 

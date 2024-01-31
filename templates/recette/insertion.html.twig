@@ -3,7 +3,8 @@
 {% block titre %}Formulaire Recette{% endblock %}
 
 {% block body %}
-    <div class="container">
+<div class="insertion">
+    <div class="container content-insert">
         {% for message in app.session.flashBag.get('error') %}
             <div class="alert alert-danger">
                 {{ message }}
@@ -15,37 +16,42 @@
             </div>
         {% endfor %}
     {{ form_start(form)}}
-    <div class="row">
-        <div class="col">{{ form_row(form.Mois)}}</div>
-        <div class="col">{{ form_row(form.Annees)}}</div>
-    </div>
-        <br/>
-    <div class="row">
-        <div class="col">{{ form_row(form.Maternite) }}</div>
-        <div class="col">{{ form_row(form.Medecine) }}</div>
-        <div class="col">{{ form_row(form.Actes_Chirurgicaux) }}</div>
-        <div class="col">{{ form_row(form.Pediatrie) }}</div>
-        <div class="col">{{ form_row(form.Ophtalmo) }}</div>
-        <div class="col">{{ form_row(form.ATU) }}</div>
-    </div><div class="row">    
-        <div class="col">{{ form_row(form.Banque_de_sang) }}</div>
-        <div class="col">{{ form_row(form.Tiers_service) }}</div>
-        <div class="col">{{ form_row(form.CE_CM) }}</div>
-        <div class="col">{{ form_row(form.ECG) }}</div>
-        <div class="col">{{ form_row(form.Echo) }}</div>
-        <div class="col">{{ form_row(form.Radio) }}</div>
-    </div><div class="row">     
-        <div class="col">{{ form_row(form.Labo) }}</div>
-        <div class="col">{{ form_row(form.Stomato) }}</div>
-        <div class="col">{{ form_row(form.Hebergement_salle_payante) }}</div>
-        <div class="col">{{ form_row(form.Hebergement_salle_commune) }}</div>
-    </div>
-    <div class="row">
-        <div class="col">{{ form_row(form.Marge_beneficiaire) }}</div>
-        <div class="col">{{ form_row(form.DONS) }}</div>
-    </div>
-    <div>{{ form_row(form.Envoyer) }} </div>
-    </div>
-    {{ form_rest(form) }}
+        <div class="row">
+            <div class="col">{{ form_row(form.Mois)}}</div>
+            <div class="col">{{ form_row(form.Annees)}}</div>
         </div>
+            <br/>
+        <div class="row">
+            <div class="col">{{ form_row(form.Maternite) }}</div>
+            <div class="col">{{ form_row(form.Medecine) }}</div>
+            <div class="col">{{ form_row(form.Actes_Chirurgicaux) }}</div>
+            <div class="col">{{ form_row(form.Pediatrie) }}</div>
+            <div class="col">{{ form_row(form.Ophtalmo) }}</div>
+            <div class="col">{{ form_row(form.ATU) }}</div>
+        </div><div class="row">    
+            <div class="col">{{ form_row(form.Banque_de_sang) }}</div>
+            <div class="col">{{ form_row(form.Tiers_service) }}</div>
+            <div class="col">{{ form_row(form.CE_CM) }}</div>
+            <div class="col">{{ form_row(form.ECG) }}</div>
+            <div class="col">{{ form_row(form.Echo) }}</div>
+            <div class="col">{{ form_row(form.Radio) }}</div>
+        </div><div class="row">     
+            <div class="col">{{ form_row(form.Labo) }}</div>
+            <div class="col">{{ form_row(form.Stomato) }}</div>
+            <div class="col">{{ form_row(form.Hebergement_salle_payante) }}</div>
+            <div class="col">{{ form_row(form.Hebergement_salle_commune) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(form.Marge_beneficiaire) }}</div>
+            <div class="col">{{ form_row(form.DONS) }}</div>
+        </div>
+        <div>
+            {{ form_label(form.Envoyer) }}
+        </div>
+        
+        
+        
+    {{ form_rest(form) }}
+    </div>
+</div>
 {% endblock %}

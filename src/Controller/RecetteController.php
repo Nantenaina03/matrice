@@ -34,7 +34,7 @@ class RecetteController extends AbstractController
             ]);
 
             if($check){
-                $this->addFlash(type:"error", message:"Erreur");
+                $this->addFlash(type:"error", message:"$mois $annees existe déjà");
                  // Réinitialiser le formulaire pour vider les champs
                 $form = $this->createForm(RecetteType::class, new Recette());
             } else {
@@ -116,6 +116,7 @@ class RecetteController extends AbstractController
             $manager = $doctrine->getManager();
             $manager->persist($recette);
             $manager->flush();
+
             
         //FlashBach
             $this->addFlash(
@@ -139,6 +140,17 @@ class RecetteController extends AbstractController
         return $this->render('recette/Affichage.html.twig', [
             'donnees' => $donnees,
         ]);
+
+    }
+    #[Route("/Affichage/tab", name: "Tab")]
+    public function Tab(ManagerRegistry $doctrine, Request $request): Response
+    {
+        $donnees = $doctrine->getRepository(Recette::class)->findAll();
+    
+        return $this->render('recette/Affichage.html.twig', [
+            'donnees' => $donnees,
+        ]);
+
     }
     
 }
