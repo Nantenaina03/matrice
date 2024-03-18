@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -29,6 +31,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToMany(mappedBy: 'cretedBy', targetEntity: Recette::class)]
+    private Collection $recettes;
+
+    #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Recette::class)]
+    private Collection $UserId;
+
+    public function __construct()
+    {
+        $this->recettes = new ArrayCollection();
+        $this->UserId = new ArrayCollection();
+    }
+  
     public function getId(): ?int
     {
         return $this->id;
@@ -97,5 +111,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes(): Collection
+    {
+        return $this->recettes;
+    }
+
+    public function addRecette(Recette $recette): static
+    {
+        if (!$this->recettes->contains($recette)) {
+            $this->recettes->add($recette);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getUserId(): Collection
+    {
+        return $this->UserId;
+    }
+
+    public function addUserId(Recette $UserId): static
+    {
+        if (!$this->UserId->contains($UserId)) {
+            $this->UserId->add($UserId);
+            $UserId->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserId(Recette $UserId): static
+    {
+        if ($this->UserId->removeElement($UserId)) {
+            // set the owning side to null (unless already changed)
+            if ($UserId->getCreatedBy() === $this) {
+                $UserId->setCreatedBy(null);
+            }
+        }
+
+        return $this;
     }
 }

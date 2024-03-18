@@ -1,0 +1,80 @@
+{% extends 'recette/navigation.html.twig' %}
+
+{% block title%}{% endblock %}
+{% block body %}
+    <body>
+        {% block pageTitle %}Calcul Trimestriel{% endblock pageTitle %}
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+        <div class="container">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                <tr class="trim">
+                    <th scope="col" class="trim">Mois</th>
+                    <th scope="col">RPE à repartir selon instruction permanent</th>
+                    <th scope="col">Marge bénéficiaire des médicaments</th>
+                    <th scope="col">DONS</th>
+                    <th scope="col">Fonds équité</th>
+                    <th scope="col">Fonds d'urgence</th>
+                    <th scope="col">Fonctionnement 52%</th>
+                    <th scope="col">Primes/Intéressement</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, ligne in trimestre %}
+                    {% if key is divisible by(3) and key != 0 %}
+                        <tr class="trim">
+                            <th class="trim">Trimestre {{ key // 3 }}</th>
+                            <td>{{ rpeParTrimestre['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ margeBeneficiaire['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ dons['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ fondsEquite['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ fondsUrgence['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ fonctionnement['trimestre' ~ (key // 3)] }}</td>
+                            <td>{{ primesInteressement['trimestre' ~ (key // 3)] }}</td>
+                        </tr>
+                    {% endif %}
+                    
+                    <tr>
+                        <th class="trim">{{ ligne.mois }}</th>
+                        <td>{{ ligne.rpeInstructionPermanent }}</td>
+                        <td>{{ ligne.margeBeneficiaire}}</td>
+                        <td>{{ ligne.dons }}</td>
+                        <td>{{ ligne.fondsEquite }}</td>
+                        <td>{{ ligne.fondsUrgence }}</td>
+                        <td>{{ ligne.fonctionnement }}</td>
+                        <td>{{ ligne.primesInteressement }}</td>
+                    </tr>
+
+                    {% if key == 11 %}
+                        {# Ajouter le trimestre 4 avant le total #}
+                        <tr class="trim">
+                            <th class="trim">Trimestre 4</th>
+                            <td>{{ rpeParTrimestre['trimestre4'] }}</td>
+                            <td>{{ margeBeneficiaire['trimestre4'] }}</td>
+                            <td>{{ dons['trimestre4'] }}</td>
+                            <td>{{ fondsEquite['trimestre4'] }}</td>
+                            <td>{{ fondsUrgence['trimestre4'] }}</td>
+                            <td>{{ fonctionnement['trimestre4'] }}</td>
+                            <td>{{ primesInteressement['trimestre4'] }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+                    <tr class="trim">
+                        <th>Total</th>
+                        <td>{{totalRpeParTrimestre}}</td>
+                        <td>{{totalMargeBeneficiaire}}</td>
+                        <td>{{totalDons}}</td>
+                        <td>{{totalFondsEquite}}</td>
+                        <td>{{totalFondsUrgence}}</td>
+                        <td>{{totalFonctionnement}}</td>
+                        <td>{{totalPrimesInteressement}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}

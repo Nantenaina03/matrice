@@ -1,0 +1,9 @@
+{% extends 'template.html.twig' %}
+
+
+{% block PageTitle %}
+    
+{% if userConnecte is not empty %}
+{{ userConnecte[0].id }}
+{% endif %}
+{% endblock %}

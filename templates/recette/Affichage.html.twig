@@ -4,7 +4,28 @@
 
     {% block body %}
     <div class="content">
-        <h1> RECETTE ANNUELLE DE L'ETABLISSEMENT </h1>     
+        <h1> RECETTE ANNUELLE DE L'ETABLISSEMENT </h1> 
+        <form method="post" action="{{ path('affichage.id', {'id': id}) }}">
+            <label for="selectInput">Années :</label>
+            <select id="selectInput" name="annee">
+                <option value="18">2018</option>
+                <option value="19">2019</option>
+                <option value="20">2020</option>
+                <option value="21">2021</option>
+                <option value="22">2022</option>
+                <option value="23">2023</option>
+                <option value="24">2024</option>
+                <option value="25">2025</option>
+                <option value="26">2026</option>
+                <option value="27">2027</option>
+                <option value="28">2028</option>
+                <option value="29">2029</option>
+                <option value="30">2030</option>
+            </select>
+            <button type="submit" class="btn btn-outline-success">Envoyer</button>
+        </form>
+        <button type="btn" class="btn btn-outline-success"><a href="{{ path('trimestre', {id: id}) }}" >Trimestre</a></button>
+        <button type="btn" class="btn btn-outline-success"><a href="{{ path('app_inter', {id: id}) }}" >Inter</a></button>
         <table class="table table-bordered  table-responsive custom-table">
             <tr>
                 <td class="table table-info">Années</td>
@@ -40,40 +61,44 @@
                 <td class="table table-warning">Compte_FEH</td>
                 <td>Hebergement_salle_commune </td>
             </tr>
-        {% for donnees in donnees %}
+            
+        {% for i in mois %}
             <tr>
-                <td>{{ donnees.annees}} </td>
-                <td>{{ donnees.mois}} </td>
-                <td>{{ donnees.maternite }} </td>
-                <td>{{ donnees.medecine }} </td>
-                <td>{{ donnees.ActesChirurgicaux }} </td>
-                <td>{{ donnees.Pediatrie }} </td>
-                <td>{{ donnees.Ophtalmo }} </td>
-                <td>{{ donnees.ATU }} </td>
-                <td>{{ donnees.BanqueDeSang }} </td>
-                <td>{{ donnees.TiersService }} </td>
-                <td class="table table-active">{{ donnees.RPEActes }} </td>
-                <td>{{ donnees.CECM }} </td>
-                <td class="table table-active">{{ donnees.Partmed }} </td>
-                <td class="table table-active">{{ donnees.RPE }} </td>
-                <td>{{ donnees.ECG }} </td>
-                <td>{{ donnees.Echo }} </td>
-                <td>{{ donnees.Radio }} </td>
-                <td>{{ donnees.Labo }} </td>
-                <td class="table table-active">{{ donnees.CompteLIM }} </td>
-                <td class="table table-active">{{ donnees.RPE2 }} </td>
-                <td>{{ donnees.Stomato }} </td>
-                <td class="table table-active">{{ donnees.CompteStomato }} </td>
-                <td class="table table-active">{{ donnees.CompteRPE }} </td>
-                <td>{{ donnees.HebergementSallePayante }} </td>
-                <td class="table table-active">{{ donnees.TOTALRPE }} </td>
-                <td class="table table-active">{{ donnees.RPNonPermanent }} </td>
-                <td class="table table-active">{{ donnees.RPEInstructionPermanent }} </td>
-                <td class="table table-active">{{ donnees.AutoriseFonctionnement }} </td>
-                <td class="table table-active">{{ donnees.FondDeSecours }} </td>
-                <td class="table table-active">{{ donnees.PrimesRendement }} </td>
-                <td class="table table-active">{{ donnees.CompteFEH }} </td>
-                <td>{{ donnees.HebergementSalleCommune }} </td>
+                <td>{{ annees }} </td>
+                <td>{{ i }} </td>
+                {% if donnees[i] is defined  %}
+                    <td>{{ donnees[i].maternite}} </td>
+                    <td>{{ donnees[i].medecine }} </td>
+                    <td>{{ donnees[i].ActesChirurgicaux }} </td>
+                    <td>{{ donnees[i].Pediatrie }} </td>
+                    <td>{{ donnees[i].Ophtalmo }} </td>
+                    <td>{{ donnees[i].ATU }} </td>
+                    <td>{{ donnees[i].BanqueDeSang }} </td>
+                    <td>{{ donnees[i].TiersService }} </td>
+                    <td class="table table-active">{{ donnees[i].RPEActes }} </td>
+                    <td>{{ donnees[i].CECM }} </td>
+                    <td class="table table-active">{{ donnees[i].Partmed }} </td>
+                    <td class="table table-active">{{ donnees[i].RPE }} </td>
+                    <td>{{ donnees[i].ECG }} </td>
+                    <td>{{ donnees[i].Echo }} </td>
+                    <td>{{ donnees[i].Radio }} </td>
+                    <td>{{ donnees[i].Labo }} </td>
+                    <td class="table table-active">{{ donnees[i].CompteLIM }} </td>
+                    <td class="table table-active">{{ donnees[i].RPE2 }} </td>
+                    <td>{{ donnees[i].Stomato }} </td>
+                    <td class="table table-active">{{ donnees[i].CompteStomato }} </td>
+                    <td class="table table-active">{{ donnees[i].CompteRPE }} </td>
+                    <td>{{ donnees[i].HebergementSallePayante }} </td>
+                    <td class="table table-active">{{ donnees[i].TOTALRPE }} </td>
+                    <td class="table table-active">{{ donnees[i].RPNonPermanent }} </td>
+                    <td class="table table-active">{{ donnees[i].RPEInstructionPermanent }} </td>
+                    <td class="table table-active">{{ donnees[i].AutoriseFonctionnement }} </td>
+                    <td class="table table-active">{{ donnees[i].FondDeSecours }} </td>
+                    <td class="table table-active">{{ donnees[i].PrimesRendement }} </td>
+                    <td class="table table-active">{{ donnees[i].CompteFEH }} </td>
+                    <td>{{ donnees[i].HebergementSalleCommune }} </td>
+                    <td>{{ donnees[i].RPEInstructionPermanent }} </td>
+                {% endif %}
             </tr>
         {% endfor %}
         </table>

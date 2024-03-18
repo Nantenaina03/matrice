@@ -129,6 +129,21 @@ class Recette
     #[ORM\Column]
     private ?int $Annees = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $trimestre1 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $trimestre2 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $trimestre3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $trimestre4 = null;
+
+    #[ORM\ManyToOne(inversedBy: 'UserId')]
+    private ?User $createdBy = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -586,6 +601,66 @@ class Recette
     public function setAnnees(int $Annees): static
     {
         $this->Annees = $Annees;
+
+        return $this;
+    }
+
+    public function getTrimestre1(): ?int
+    {
+        return $this->trimestre1;
+    }
+
+    public function setTrimestre1(?int $trimestre1): static
+    {
+        $this->trimestre1 = $trimestre1;
+
+        return $this;
+    }
+
+    public function getTrimestre2(): ?int
+    {
+        return $this->trimestre2;
+    }
+
+    public function setTrimestre2(?int $trimestre2): static
+    {
+        $this->trimestre2 = $trimestre2;
+
+        return $this;
+    }
+
+    public function getTrimestre3(): ?int
+    {
+        return $this->trimestre3;
+    }
+
+    public function setTrimestre3(?int $trimestre3): static
+    {
+        $this->trimestre3 = $trimestre3;
+
+        return $this;
+    }
+
+    public function getTrimestre4(): ?int
+    {
+        return $this->trimestre4;
+    }
+
+    public function setTrimestre4(?int $trimestre4): static
+    {
+        $this->trimestre4 = $trimestre4;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): static
+    {
+        $this->createdBy = $createdBy;
 
         return $this;
     }

@@ -1,0 +1,247 @@
+{% extends 'template.html.twig' %}
+
+{% block titre %}Bonification{% endblock %}
+{% block PageTitle %}BONIFICATION{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row m-5">
+            <h3>BONIFICATION CORRESPONDANT A LA NOTE INDIVIDUELLE DU CHEF HIERRARCHIQUE</h3>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Classe des notes sur 20</th>
+                        <th scope="col">Coefficient (c)</th>
+                        <th scope="col">Nombre de bénéficiaire (N)</th>
+                        <th scope="col">Somme de Coefficients S = c*N</th>
+                        <th scope="col">Montant par notes M = NIC </th>
+                        <th scope="col">Par individu Pi = M/N</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Note 17 à 20</th>
+                        <td>0.45</td>
+                        <td>1</td>
+                        <td>0.45</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Note 14 à 16</th>
+                        <td>0.35</td>
+                        <td>1</td>
+                        <td>0.35</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Note 11 à 13</th>
+                        <td>0.20</td>
+                        <td>1</td>
+                        <td>0.20</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">TOTAL</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row m-5">
+            <h3>MONTANT DE LA QUOTE-PART INDIVIDUELLE</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Catégorie professionnel</th>
+                        <th scope="col">Quotepart à 100% QT = P+Ri+Ti</th>
+                        <th scope="col">Nb bénéficiaire par catégorie (n)</th>
+                        <th scope="col">Total gain par catégorie</th>
+                        <th scope="col">Pénalisation 75% G = QP*0.25</th>
+                        <th scope="col">Pénalisation 50% G = QP*0.5</th>
+                        <th scope="col">Pénalisation 25% G = QP*0.75</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">CE</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Adjoint Administratif chargé des Affaires Médicales</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Adjoint Administratif chargé des Affaires Financier</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chef d'unité</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Professeur</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Médecin spécialiste</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Médecin généraliste</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Major des majors</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chef division des Administrations</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Surveillant des unités de soins</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Paramedicaux - Assistante sociale</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sécrétaire de diréction</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Caissiers</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Vaguemestre - Secretaire - Documentaliste</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Technicien de surface agent de maintenance Aides</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chauffeur Ambulancier</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chauffeur Administratif</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Agent de sécurité - Gardien</th>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ouvrier-Serveur-Servant-Brancardier</th>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

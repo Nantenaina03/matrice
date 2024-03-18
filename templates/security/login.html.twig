@@ -4,47 +4,67 @@
 
 
 {% block body %}
-<div class="login">
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
 
-        {% if app.user %}
-            <div class="mb-3">
-                Vous êtes connécté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+<section class="vh-100" style="background-color: #70b4c6;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="https://th.bing.com/th/id/R.e01624be6d0ed82c2a9e35c0702a5e5f?rik=BOwBruzX3iLCVQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20112%2f200%2fw600h400%2f20220224%2fed10-f450476e938311c1d60967e0e4eec28a.jpg&ehk=uSov8gobdGwN9GFMsA6ojgY3tiYcxx5B1YHrPZJ52qk%3d&risl=&pid=ImgRaw&r=0"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; width: 425px;
+                  height: 560px;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                    
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Vous êtes connécté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                            </div>
+                        {% endif %}
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h1 fw-bold mb-0">HOPITAL RPE</span>
+                    </div>
+  
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Connectez-vous à votre compte</h5>
+  
+                    <div class="form-outline mb-4">
+                        <label for="inputUsername">Utilisateur</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="Utilisateur" required autofocus>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                        <label for="inputPassword">Mots de passe</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    </div>
+                    <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+    >
+  
+                    <div class="pt-1 mb-4">
+                        <button class="btn btn-primary" type="submit">
+                            Se connecter
+                        </button>
+                    </div>
+  
+                    <a class="small text-muted" href="#!">Mot de passe oublié ?</a>
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Vous n’avez pas de compte ?<a href="{{'/register'}}">Inscrivez-vous ici</a></p>
+                  </form>
+  
+                </div>
+              </div>
             </div>
-        {% endif %}
-
-        <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
-        <label for="inputUsername">Hopital</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="Hopital" required autofocus>
-        <label for="inputPassword">Mots de passe</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-        <input type="hidden" name="_csrf_token"
-            value="{{ csrf_token('authenticate') }}"
-        >
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
-                </label>
-            </div>
-        #}
-
-        <button class="btn btn-primary" type="submit">
-            Se connecter
-        </button>
-        <a href="{{'/register'}}">
-            <button class="btn btn-success" type="button">
-                Créer un compte
-            </button>
-        </a>
-    </form>
-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Inter 1</title>
+    <link rel='stylesheet' href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <style>
+        /* Vos styles CSS */
+    </style>
+</head>
+<style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .trim {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+<body>
+    <form method="get" action="{{ path('app_inter') }}">
+        <label for="trimestre">Sélectionnez le trimestre :</label>
+        <select name="trimestre" id="trimestre">
+            {% for t in trimestres %}
+                <option value="{{ t }}" {% if t == trimestreSelectionne %}selected{% endif %}>Trimestre {{ t }}</option>
+            {% endfor %}
+        </select>
+        <label for="annee">Sélectionnez l'année :</label>
+        <select name="Annees" id="annees">
+            {% for a in annee %}
+                <option value="{{ a }}" {% if a == anneeSelectionnee %}selected{% endif %}>Année {{ a }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Valider</button>
+    </form>
+
+    <h1>{{anneeSelectionnee}} : Trimestre {{ trimestreSelectionne }}</h1>
+
+    <table>
+        <thead>
+            <tr class="trim">
+                <th> SIGLE </th>
+                <th> Critère de calcul de Fi </th>
+                <th> Pourcentage retenu </th>
+                <th> Montant </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                {% for item in sigle %}
+                    {{ item }}<br>
+                {% endfor %}
+                </td>
+                <td>
+                    {% for item in critere %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in pourcentage %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in montant %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr class="trim">
+                <th> SIGLE </th>
+                <th> Critère de repertition des primes (50% Y) </th>
+                <th> Pourcentage retenu </th>
+                <th> Montant </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {% for item in sigle2 %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in critere2 %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in pourcentage2 %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in montant2 %}
+                        {{ item }}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Prime de responsabilité</h2>
+    <table>
+        <thead>
+            <tr class="trim">
+                <th>Catégorie professionnel</th>
+                <th>"Coefficient prime de responsabilité"<br> (r)</th>
+                <th>"Nb bénéficiaire par catégorie"<br> (n)</th>
+                <th>"Somme coefficient de ponderation" <br>S=Somme (r * n)</th>
+                <th>"Montant à distribuer"<br> PR</th>
+                <th>"Montant par catégorie" <br>MC= PR * r/S</th>
+                <th>"Prime de responsabilité par agent" <br>Ri = MC/n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in tableauR %}
+                <tr>
+                    <td class="trim">{{ tableauCp[key] }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ n }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ pr }}</td>
+                    <td>{{ tableauMC[key] }}</td>
+                    <td>{{ tableauRi[key] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Prime de technicité</h2>
+    <table>
+        <thead>
+            <tr class="trim">
+                <th>Catégorie professionnel</th>
+                <th>"Coefficient prime de technicité"<br> (t)</th>
+                <th>"Nb bénéficiaire par catégorie"<br> (n)</th>
+                <th>"Somme coefficient de ponderation" <br>S=Somme (t * n)</th>
+                <th>"Montant à distribuer"<br> PT</th>
+                <th>"Prime de technicité par catégorie" <br>T = PT * t</th>
+                <th>"Prime de technicité individuel" <br>Ti = T/n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in tableauR %}
+                <tr>
+                    <td class="trim">{{ tableauCp[key] }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ n }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ pt }}</td>
+                    <td>{{ tableauT[key] }}</td>
+                    <td>{{ tableauTi[key] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Calcul de bonification correspondant à la note individuelle du chef hierrarchique</h2>
+    <table>
+        <thead>
+            <tr class="trim">
+                <th>Classe des notes sur<br> 20</th>
+                <th>"Coefficient"<br> (c)</th>
+                <th>"Nombre de bénéficiaire"<br> (n)</th>
+                <th>"Somme coefficient (c)" <br>S=Somme (c * n)</th>
+                <th>Note individuel du chef hierrarchique</th>
+                <th>"Montant par de notes<br> M=NIC ( c*N)/S"</th>
+                <th>"Par individuel" <br>Pi = M/n</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in coefficient %}
+                <tr>
+                    <td class="trim">{{ tableauCp[key] }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ n }}</td>
+                    <td>{{ value }}</td>
+                    <td>{{ nic }}</td>
+                    <td>{{ montantM[key] }}</td>
+                    <td>{{ parIndividu[key] }}</td>
+                </tr>
+            {% endfor %}
+                <tr class="trim">
+                    <td>Total</td>
+                    <td>{{ totalCo }}</td>
+                    <td>3</td>
+                    <td>{{ totalCo }}</td>
+                    <td>-</td>
+                    <td>{{ totalM }}</td>
+                    <td>{{ totalIndividu }}</td>
+                </tr>
+        </tbody>
+    </table>
+        
+    <table>
+        <thead>
+            <tr class="trim">
+                <th>Catégorie professionnel<br> 20</th>
+                <th>"Quote-part à 100%<br> QT=P+Ri+Ti"</th>
+                <th>"Nombre de bénéficiaire"<br> (n)</th>
+                <th>Total gain par catégorie</th>
+                <th>Pénalisation 75%<br>G=QP (1-0,75)</th>
+                <th>Pénalisation 50%<br>G=QP (1-0,50)</th>
+                <th>Pénalisation 25%<br>G=QP (1-0,25)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in tableauRi %}
+                <tr>
+                    <td class="trim">{{ tableauCp[key] }}</td>
+                    <td>{{ quote[key] }}</td>
+                    <td>{{ n }}</td>
+                    <td>{{ gain[key] }}</td>
+                    <td>{{ p75[key] }}</td>
+                    <td>{{ p50[key] }}</td>
+                    <td>{{ p25[key] }}</td>
+                </tr>
+            {% endfor %}
+                <tr class="trim">
+                    <td>Total</td>
+                    <td>{{ totalQ }}</td>
+                    <td>20</td>
+                    <td>{{ totalG }}</td>
+                    <td>{{ total75 }}</td>
+                    <td>{{ total50 }}</td>
+                    <td>{{ total25 }}</td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>
